@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+   h1, h2, h3 {
+    color: #333;
+  }
+   /* Landing Page */
+  #landingPage {
+    background-image: url(coast.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+  }
+   #landingPage h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+   #landingPage p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+   #startBtn {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+   #startBtn:hover {
+    background-color: #555;
+  }
+   /* App Container */
+  #appContainer {
+    padding: 40px;
+  }
+   #appContainer.hidden {
+    display: none;
+  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  /* General styles */
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+ }
+ 
+ 
+ /* Search container styles */
+ #searchContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+ }
+ 
+ 
+ #searchInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  width: 300px;
+ }
+ 
+ 
+ #searchBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+ }
+ 
+ 
+ /* Cocktail list styles */
+ #cocktailList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
+ }
+ 
+ 
+ #cocktailList div {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+ }
+ 
+ 
+ #cocktailList img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+ }
+ 
+ 
+ #cocktailList h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+ }
+ 
+ 
+ #cocktailList p {
+  margin-top: 0;
+ }
+ 
+ 
+ /* Recipe details styles */
+ #recipeDetails {
+  margin-top: 30px;
+  text-align: center;
+ }
+ 
+ 
+ #recipeDetails img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 4px;
+ }
+ 
+ 
+ #recipeDetails ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+  text-align: left;
+ }
+ 
+ 

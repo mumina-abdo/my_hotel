@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Cocktail Recipe App</title>
+ <link rel="stylesheet" href="coke.css">
+</head>
+<body>
+ <div id="landingPage">
+   <h1>Welcome to Cocktail Recipe App</h1>
+   <p>Discover and explore delicious cocktail recipes</p>
+   <button id="startBtn">Get Started</button>
+ </div>
+
+
+ <div id="appContainer" class="hidden">
+   <div id="searchContainer">
+     <input type="text" id="searchInput" placeholder="Search cocktails...">
+     <button id="searchBtn">Search</button>
+   </div>
+   <div id="cocktailList"></div>
+   <div id="recipeDetails"></div>
+ </div>
+
+
+
+
+   <script>
+       const landingPage = document.getElementById('landingPage');
+const appContainer = document.getElementById('appContainer');
+const startBtn = document.getElementById('startBtn');
+
+
+startBtn.addEventListener('click', () => {
+ landingPage.style.display = 'none';
+ appContainer.classList.remove('hidden');
+});
+
+
+// Rest of your JavaScript code...
+       const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const cocktailList = document.getElementById('cocktailList');
+const recipeDetails = document.getElementById('recipeDetails');
+
+
+searchBtn.addEventListener('click', searchCocktails);
+
+
+function searchCocktails() {
+ const query = searchInput.value;
+ const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
+
+
+ fetch(apiUrl)
+   .then(response => response.json())
+   .then(data => {
+     cocktailList.innerHTML = '';
+     recipeDetails.innerHTML = '';
+     data.drinks.forEach(drink => {
+       const cocktailElement = document.createElement('div');
+       cocktailElement.innerHTML = `
+         <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
+         <h3>${drink.strDrink}</h3>
+         <p>${drink.strInstructions.slice(0, 100)}...</p>
+       `;
+       cocktailElement.addEventListener('click', () => displayRecipe(drink.idDrink));
+       cocktailList.appendChild(cocktailElement);
+     });
+   })
+   .catch(error => console.error(error));
+}
+
+
+function displayRecipe(cocktailId) {
+ const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`;
+
+
+ fetch(apiUrl)
+   .then(response => response.json())
+   .then(data => {
+     const drink = data.drinks[0];
+     recipeDetails.innerHTML = `
+       <h2>${drink.strDrink}</h2>
+       <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
+       <h3>Ingredients:</h3>
+       <ul>
+         ${getIngredients(drink)}
+       </ul>
+       <h3>Instructions:</h3>
+       <p>${drink.strInstructions}</p>
+     `;
+   })
+   .catch(error => console.error(error));
+}
+
+
+function getIngredients(drink) {
+ let ingredients = '';
+ for (let i = 1; i <= 15; i++) {
+   const ingredient = drink[`strIngredient${i}`];
+   const measure = drink[`strMeasure${i}`];
+   if (ingredient) {
+     ingredients += `<li>${ingredient} - ${measure || ''}</li>`;
+   }
+ }
+ return ingredients;
+}
+
+
+
+
+function displayDefaultCocktails() {
+ const apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
+
+ fetch(apiUrl)
+   .then(response => response.json())
+   .then(data => {
+     cocktailList.innerHTML = '';
+     recipeDetails.innerHTML = '';
+     data.drinks.forEach(drink => {
+       const cocktailElement = document.createElement('div');
+       cocktailElement.innerHTML = `
+         <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
+         <h3>${drink.strDrink}</h3>
+         <p>${drink.strInstructions.slice(0, 100)}...</p>
+       `;
+       cocktailElement.addEventListener('click', () => displayRecipe(drink.idDrink));
+       cocktailList.appendChild(cocktailElement);
+     });
+   })
+   .catch(error => console.error(error));
+}
+window.addEventListener('load', displayDefaultCocktails);
+
+
+
+
+function searchCocktails() {
+ const query = searchInput.value.trim();
+
+
+ if (query === '') {
+   displayDefaultCocktails();
+   return;
+ }
+
+
+ const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`;
+
+
+ // ... (the rest of the function remains the same)
+}
+
+
+
+
+
+
+   </script>
+</body>
+</html>
+

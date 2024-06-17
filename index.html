@@ -1,0 +1,49 @@
+<!DOCTYPE htm
+<html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Foods </title>
+   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+ </head>
+ <body>
+   <header>
+     <nav class="navbar">
+       <a class="logo" href="#">Foods<span>.</span></a>
+       <ul class="menu-links">
+         <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+         <li><a href="index.htm">Home</a></li>
+         <li><a href="landing.html">Foods</a></li>
+         <li><a href="connect.html">Food Products</a></li>
+         <li><a href="cock.html">Cocktails</a></li>
+         <li><a href="#">About us</a></li>
+         <li><a href="#">Contact us</a></li>
+       </ul>
+       <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+     </nav>
+   </header>
+
+
+   <section class="hero-section">
+     <div class="content">
+       <h2>Start Your Day With Fresh foods</h2>
+       <p>
+        One cannot think well, love well, sleep well, if one has not dined well
+       </p>
+       <button><a href="signup.html">Order Now</a></button>
+     </div>
+   </section>
+
+
+      <script>
+     const header = document.querySelector("header");
+     const hamburgerBtn = document.querySelector("#hamburger-btn");
+     const closeMenuBtn = document.querySelector("#close-menu-btn");
+   hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+    closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+   </script>
+  
+ </body>
+</html>
+
